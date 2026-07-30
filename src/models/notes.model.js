@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const notesSchema = new mongoose.Schema({
     title: {
         type: String,
-        default: Notes
+        default: "Notes"
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

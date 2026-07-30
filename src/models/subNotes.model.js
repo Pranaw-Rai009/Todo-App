@@ -3,8 +3,7 @@ import mongoose, { mongo } from  'mongoose'
 const subNotesSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
-        default: ""
+        default: "Untitled"
     },
     description: {
         type: String,
