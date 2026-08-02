@@ -29,3 +29,16 @@ export const getAllSubNotes = async (req, res) => {
         })
     }
 }
+
+export const getSubNotesById = async (req, res) => {
+    try {
+        const subNotesById = await SubNotes.findById(req.params.id)
+        res.status(200).json(subNotesById)
+    } catch(error) {
+        console.log(error)
+        rse.status(500).json({
+            message: error.message
+        })
+    }
+    
+}
