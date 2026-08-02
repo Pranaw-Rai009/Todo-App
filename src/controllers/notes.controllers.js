@@ -12,3 +12,15 @@ export const createNotes = async (req, res) => {
         })
     }
 }
+
+export const getAllNotes = async (req, res) => {
+    try {
+        const allNotes = await Notes.find()
+        res.status(200).json(allNotes)
+    } catch(error) {
+        console.log(error)
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
