@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 
 import notesRouter from './routes/notes.routes.js'
 import subNotesRouter from './routes/subNotes.routes.js'
+import userRouter from './routes/user.routes.js'
 
 const app = express()
 
@@ -25,3 +26,6 @@ app.use("/api/notes", notesRouter)
 
 // Manipulate SubNotes
 app.use("/api/subNotes", subNotesRouter)
+
+// Manipulate Users
+app.use("/api/users", userRouter)
