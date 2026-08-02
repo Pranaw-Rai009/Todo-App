@@ -3,6 +3,7 @@ import {createNotes, getAllNotes, getAllNotesbyId, deleteNotesbyId} from '../con
 
 const router = Router()
 
+// Manipulate Notes
 router.post("/", createNotes)
 
 router.get("/", getAllNotes)
