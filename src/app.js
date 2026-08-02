@@ -18,4 +18,5 @@ app.use(express.urlencoded({limit: "16kb", extended: true}))
 app.use(express.static("public"))
 
 app.use("/api/notes", notesRouter)
-app.use("/api/getNotes", notesRouter)
+// app.use("/api/getNotes", notesRouter)
+// app.use("/api/getAllNotesbyId", notesRouter)
