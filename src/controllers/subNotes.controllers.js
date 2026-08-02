@@ -42,3 +42,17 @@ export const getSubNotesById = async (req, res) => {
     }
     
 }
+
+export const deleteSubNotesById = async (req, res) => {
+    try {
+        await SubNotes.findByIdAndDelete(req.params.id)
+        res.status(200).json({
+            message: "Deleted Successfully"
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
