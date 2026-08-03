@@ -7,7 +7,7 @@ const subTaskSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['Pending', "In progress", "Done"],
+        enum: ['Pending', "Done"],
         default: 'Pending'
     },
     date: {
