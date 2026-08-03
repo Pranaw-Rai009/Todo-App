@@ -30,7 +30,7 @@ app.use("/api/notes", notesRouter)
 app.use("/api/subNotes", subNotesRouter)
 
 // Manipulate Users
-app.use("/api/users", userRouter)
+app.use("/api/user", userRouter)
 
 // Manipulate SubTasks
 app.use("/api/subTasks", subTaskRouter)

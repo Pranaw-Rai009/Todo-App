@@ -18,6 +18,22 @@ export const createUser = async (req, res) => {
     }
 }
 
+export const udpateUserById = async(req, res) => {
+    try {
+        await User.findByIdAndUpdate(
+            req.params.id,
+            req.body, 
+            {new: true})
+        res.status(200).json({
+            message: "Updated User"
+        })
+    } catch(error) {
+        console.log("Couldn't update user data", error); res.status(500).json({
+            message: error.message
+        })
+    }
+}
+
 export const getAllUsers = async(req, res) => {
     try {
         const users = await User.find()
