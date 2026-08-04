@@ -2,11 +2,31 @@ import {Notes} from '../models/notes.model.js'
 
 export const createNotes = async (req, res) => {
     try {
-        const {title} = req.body;
-        const note = await Notes.create({title});
+        const {title, userId} = req.body;
+        const note = await Notes.create({
+            title,
+            user: userId
+        });
         res.status(201).json(note)
     } catch(error) {
         console.log(error)
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
+
+export const updateNoteById = async(req, res) => {
+    try {
+        const existNote = await Notes.findById(req.params.id);
+        if(!existNote) return res.status({message: "Note Doesn't exist"})
+        
+        await Notes.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.status(200).json({
+            message: "Update Note"
+        })
+    } catch(error) {
+        console.log("Error occured while updating", error)
         res.status(500).json({
             message: error.message
         })

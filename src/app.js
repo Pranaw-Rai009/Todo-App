@@ -22,9 +22,9 @@ app.use(express.urlencoded({limit: "16kb", extended: true}))
 app.use(express.static("public"))
 
 // Manipulate Notes
-app.use("/api/notes", notesRouter)
+app.use("/api/note", notesRouter)
 // app.use("/api/getNotes", notesRouter)
-// app.use("/api/getAllNotesbyId", notesRouter)
+// app.use("/api/", notesRouter)getAllNotesbyId
 
 // Manipulate SubNotes
 app.use("/api/subNotes", subNotesRouter)
