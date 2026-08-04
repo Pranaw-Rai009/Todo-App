@@ -18,6 +18,26 @@ export const createSubNotes = async (req, res) => {
     }
 }
 
+export const updateSubNotesById = async(req, res) => {
+    try {
+
+        const existSubNote = await SubNotes.findById(req.param.id)
+        if(!existSubNote) return res.status(json({
+            message: "SubNote doesn't exist!"
+        }))
+        
+        const updateSubNote = await SubNotes.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.status(200).json({
+            message: "Subnote updated"
+        })
+    } catch(error) {
+        console.log("Error occured while updating: ", error)
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
+
 export const getAllSubNotes = async (req, res) => {
     try {
         const allSubNotes = await SubNotes.find()
