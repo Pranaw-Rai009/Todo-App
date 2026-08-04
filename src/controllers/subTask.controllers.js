@@ -18,6 +18,19 @@ export const createSubTask = async (req, res) => {
     }
 }
 
+export const updateSubTaskById = async(req, res) => {
+    try {
+        const existSubTask = await SubTask.findById(req.params.id)
+        if(!existSubTask) return res.status(404).json({message: "Sub task not found"})
+        
+        const updateSubTask = await SubTask.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.status(200).json(updateSubTask)
+    } catch(error) {
+        console.log("Error: ", error)
+        res.status(500).json({message: error.message})
+    }
+}
+
 export const getAllSubTask = async(req, res) => {
     try {
         const AllSubTask = await SubTask.find()
