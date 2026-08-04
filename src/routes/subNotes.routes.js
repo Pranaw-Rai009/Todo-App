@@ -3,8 +3,8 @@ import {createSubNotes, getAllSubNotes, getSubNotesById, deleteSubNotesById} fro
 
 const router = Router()
 
-router.post("/", createSubNotes)
-router.get("/", getAllSubNotes)
-router.get("/:id", getSubNotesById)
-router.delete("/:id", deleteSubNotesById)
+router.post("/create", createSubNotes)
+router.get("/list", getAllSubNotes)
+router.get("/getNotes/:id", getSubNotesById)
+router.delete("/delete/:id", deleteSubNotesById)
 export default router
