@@ -19,6 +19,22 @@ export const createTask = async(req, res) => {
     }
 }
 
+export const updateTaskById = async(req, res) => {
+    try {
+        const existTask = await Task.findById(req.params.id)
+        if(!existTask) return res.status(404).json({message: "Not found"})
+        
+        const updateTask = await Task.findByIdAndUpdate(req.params.id, req.body, {new: true})
+
+        res.status(200).json(updateTask)
+    }catch (error) {
+        console.log("Error: ", error)
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
+
 export const getTaskById = async ( req, res) => {
     try {
         const taskById = await Task.findById(req.params.id);
