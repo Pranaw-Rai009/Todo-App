@@ -4,13 +4,13 @@ import {authAccesToken} from '../middlewares/auth.middleware.js'
 const router = Router()
 
 // Manipulate Notes
-router.post("/create", createNotes)
-router.get("/getNotes", getAllNotes)
+router.post("/create", authAccesToken, createNotes)
+router.get("/getNotes", authAccesToken, getAllNotes)
 // :id in the path is a placeholder
-router.get("/getNotes/:id", getAllNotesbyId)
+router.get("/getNotes/:id", authAccesToken, getAllNotesbyId)
 
 // middlewaare and constroller
-router.delete("/delete/:id",authAccesToken, deleteNotesbyId)
-router.patch("/updateNote/:id", updateNoteById)
+router.delete("/delete/:id", authAccesToken, deleteNotesbyId)
+router.patch("/updateNote/:id",authAccesToken,  updateNoteById)
 
 export default router

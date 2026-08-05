@@ -3,10 +3,10 @@ import {createTask, getTaskById, getAllTask, deleteTaskbyId, updateTaskById} fro
 
 const router = Router();
 
-router.post("/create", createTask)
-router.get("/list/:id", getTaskById)
-router.get("/listAll", getAllTask)
-router.delete("/delete/:id", deleteTaskbyId)
-router.patch("/update/:id", updateTaskById)
+router.post("/create", authAccesToken,createTask)
+router.get("/list/:id", authAccesToken,getTaskById)
+router.get("/listAll", authAccesToken,getAllTask)
+router.delete("/delete/:id", authAccesToken,deleteTaskbyId)
+router.patch("/update/:id", authAccesToken,updateTaskById)
 
 export default router
