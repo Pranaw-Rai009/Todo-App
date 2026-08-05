@@ -1,5 +1,6 @@
 import {User} from '../models/user.model.js'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 
 // export const authUserLogin = async(req, res) => {
@@ -32,7 +33,19 @@ export const authUserLogin = async(req, res) => {
 
         if(!existPassword) return res.status(401).json({message: "Incorrect Password"})
         
-        res.status(200).json({message: "Login Successfull"})
+        const accesToken = existEmail.generateAccessToken()
+        const refreshToken = existEmail.generateRefreshToken()
+        
+        res.cookie("refreshToken", refreshToken, {
+            httpOnly: true,
+            secure: true,
+        })
+
+        res.status(200).json({
+            accesToken,
+            message : "Login successfull"
+        })
+        
     } catch(error) {
         console.log("Error occured: ", error)
         res.status(500).json({message: error.message})
