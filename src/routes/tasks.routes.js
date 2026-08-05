@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {createTask, getTaskById, getAllTask, deleteTaskbyId, updateTaskById} from '../controllers/task.controlles.js'
-
+import {authAccesToken} from '../middlewares/auth.middleware.js'
 const router = Router();
 
 router.post("/create", authAccesToken,createTask)
