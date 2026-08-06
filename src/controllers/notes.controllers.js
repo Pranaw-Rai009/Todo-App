@@ -2,10 +2,10 @@ import {Notes} from '../models/notes.model.js'
 
 export const createNotes = async (req, res) => {
     try {
-        const {title, userId} = req.body;
+        const {title} = req.body;
         const note = await Notes.create({
             title,
-            user: userId
+            user: req.user._id
         });
         res.status(201).json(note)
     } catch(error) {

@@ -10,6 +10,6 @@ router.get("/searchUser/:id", authAccesToken,getUserById)
 router.get("/listUser", authAccesToken,getAllUsers)
 router.delete("/deleteUser", authAccesToken,deleteUserById)
 router.patch("/updateUser/:id", authAccesToken,udpateUserById)
-router.post("/login", authAccesToken,authUserLogin)
+router.post("/login",authUserLogin)
 
 export default router
